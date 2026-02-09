@@ -1,30 +1,30 @@
 import AppearOnScroll from "@/components/AppearOnScroll";
-
+import vikasImage from "@/assets/malmo/vikas-sharma.png";
+import akshatImage from "@/assets/malmo/akshat-gupta.png";
+import kunikaImage from "@/assets/malmo/kunika-malhotra.png";
+import { Linkedin } from "lucide-react";
 
 const mentors = [
   {
-    name: "Raj Mehta",
-    role: "Senior Cloud Architect",
-    company: "Global SaaS Company",
-    image: "https://media.istockphoto.com/id/1335941248/photo/shot-of-a-handsome-young-man-standing-against-a-grey-background.jpg?s=612x612&w=0&k=20&c=JSBpwVFm8vz23PZ44Rjn728NwmMtBa_DYL7qxrEWr38=",
+    name: "Vikas Sharma",
+    role: "Software Engineering",
+    company: "Microsoft",
+    image: vikasImage,
+    linkedin: "#",
   },
   {
-    name: "Amara Chen",
-    role: "Product Manager",
-    company: "Fortune 500 Tech",
-    image: "https://static.vecteezy.com/system/resources/thumbnails/005/346/410/small/close-up-portrait-of-smiling-handsome-young-caucasian-man-face-looking-at-camera-on-isolated-light-gray-studio-background-photo.jpg",
+    name: "Akshat Gupta",
+    role: "Software Engineering",
+    company: "PhonePe",
+    image: akshatImage,
+    linkedin: "#",
   },
   {
-    name: "Sofia Rivera",
-    role: "Data Science Lead",
-    company: "AI Research Lab",
-    image: "https://media.istockphoto.com/id/1299077582/photo/positivity-puts-you-in-a-position-of-power.jpg?s=612x612&w=0&k=20&c=baDuyrwRTscUZzyAqV44hnCq7d6tXUqwf26lJTcAE0A=",
-  },
-  {
-    name: "Priya Nair",
-    role: "Engineering Manager",
-    company: "Global Service Company",
-    image: "https://t4.ftcdn.net/jpg/05/03/43/79/360_F_503437947_qJfYUufslSxdQR6uMuLgdDSjZGCKyn3B.jpg",
+    name: "Kunika Malhotra",
+    role: "Software Engineering",
+    company: "Amazon",
+    image: kunikaImage,
+    linkedin: "#",
   },
 ];
 
@@ -47,22 +47,33 @@ const Mentors = () => (
         </p>
       </AppearOnScroll>
 
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="flex flex-wrap justify-center gap-8">
         {mentors.map((mentor, i) => (
-          <AppearOnScroll key={mentor.name} delay={i * 100}>
-            <div className="rounded-2xl bg-card border border-border overflow-hidden hover:shadow-lg transition-shadow h-full flex flex-col">
-              <div className="aspect-square overflow-hidden">
+          <AppearOnScroll key={mentor.name} delay={i * 100} className="w-full max-w-[320px]">
+            <div className="rounded-2xl bg-card border border-border overflow-hidden hover:shadow-lg transition-shadow h-full flex flex-col group">
+              <div className="aspect-square overflow-hidden relative">
                 <img
                   src={mentor.image}
                   alt={`${mentor.name} - ${mentor.role}`}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   loading="lazy"
                 />
+
               </div>
-              <div className="p-5 flex-1">
-                <h3 className="text-[1.6rem] font-semibold">{mentor.name}</h3>
-                <p className="text-[1.4rem] text-accent font-medium">{mentor.role}</p>
-                <p className="text-[1.3rem] text-muted-foreground">{mentor.company}</p>
+              <div className="p-6 flex-1 text-left flex flex-col items-start">
+                <h3 className="text-[1.8rem] font-semibold mb-1">{mentor.name}</h3>
+                <p className="text-[1.4rem] text-accent font-medium mb-1">{mentor.role}</p>
+                <p className="text-[1.3rem] text-muted-foreground mb-4">{mentor.company}</p>
+
+                <a
+                  href={mentor.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-[1.4rem] font-medium text-primary hover:text-accent transition-colors mt-auto"
+                >
+                  <Linkedin className="w-5 h-5" />
+                  <span>LinkedIn</span>
+                </a>
               </div>
             </div>
           </AppearOnScroll>
@@ -71,5 +82,6 @@ const Mentors = () => (
     </div>
   </section>
 );
+
 
 export default Mentors;
